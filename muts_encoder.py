@@ -125,25 +125,25 @@ for i in xrange(len(shellcode), 1, -2):
                 # Check if a combination was found
                 if sum == int(shellcode_byte, 16):
                     if overflow:
-                        bytes[0] = "%x" % ord(char_set[j]) + bytes[0]
-                        bytes[1] = "%x" % ord(char_set[k]) + bytes[1]
-                        bytes[2] = "%x" % (ord(char_set[m])-1) + bytes[2]
+                        bytes[0] = "%02x" % ord(char_set[j]) + bytes[0]
+                        bytes[1] = "%02x" % ord(char_set[k]) + bytes[1]
+                        bytes[2] = "%02x" % (ord(char_set[m])-1) + bytes[2]
                         overflow = False
                     else:
-                        bytes[0] = "%x" % ord(char_set[j]) + bytes[0]
-                        bytes[1] = "%x" % ord(char_set[k]) + bytes[1]
-                        bytes[2] = "%x" % ord(char_set[m]) + bytes[2]
+                        bytes[0] = "%02x" % ord(char_set[j]) + bytes[0]
+                        bytes[1] = "%02x" % ord(char_set[k]) + bytes[1]
+                        bytes[2] = "%02x" % ord(char_set[m]) + bytes[2]
                     found = True
                 # Check if the shellcode byte is reached through overflow
                 elif len(hex(sum)) == 5 and int(hex(sum)[3:5], 16) == int(shellcode_byte, 16):
                     if overflow:
-                        bytes[0] = "%x" % ord(char_set[j]) + bytes[0]
-                        bytes[1] = "%x" % ord(char_set[k]) + bytes[1]
-                        bytes[2] = "%x" % (ord(char_set[m])-1) + bytes[2]
+                        bytes[0] = "%02x" % ord(char_set[j]) + bytes[0]
+                        bytes[1] = "%02x" % ord(char_set[k]) + bytes[1]
+                        bytes[2] = "%02x" % (ord(char_set[m])-1) + bytes[2]
                     else:
-                        bytes[0] = "%x" % ord(char_set[j]) + bytes[0]
-                        bytes[1] = "%x" % ord(char_set[k]) + bytes[1]
-                        bytes[2] = "%x" % ord(char_set[m]) + bytes[2]
+                        bytes[0] = "%02x" % ord(char_set[j]) + bytes[0]
+                        bytes[1] = "%02x" % ord(char_set[k]) + bytes[1]
+                        bytes[2] = "%02x" % ord(char_set[m]) + bytes[2]
                         overflow = True
                     found = True
                 if found:
